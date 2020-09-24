@@ -1,6 +1,4 @@
 #include <Arduino.h>
-#include <LiquidCrystal.h>
-#include <LCD.h>
 
 // Motor driver enable pins
 #define EN_F_Right 12
