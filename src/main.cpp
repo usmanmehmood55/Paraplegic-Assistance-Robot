@@ -44,12 +44,12 @@ void Move_Up(); void Move_Down(); void Move_Left(); void Move_Right();
 
 void setup()
 {
-  pinMode(RIGHT_bt, INPUT_PULLUP);
-  pinMode(LEFT_bt, INPUT_PULLUP);
-  pinMode(UP_bt, INPUT_PULLUP);
-  pinMode(DOWN_bt, INPUT_PULLUP);
-  pinMode(EM_STP_Base, INPUT_PULLUP);
-  pinMode(EM_STP_Linear, INPUT_PULLUP);
+  pinMode(RIGHT_bt, INPUT);
+  pinMode(LEFT_bt, INPUT);
+  pinMode(UP_bt, INPUT);
+  pinMode(DOWN_bt, INPUT);
+  pinMode(EM_STP_Base, INPUT);
+  pinMode(EM_STP_Linear, INPUT);
 
   attachInterrupt(digitalPinToInterrupt(UP_bt), Move_Up, CHANGE);
   attachInterrupt(digitalPinToInterrupt(DOWN_bt), Move_Down, CHANGE);
