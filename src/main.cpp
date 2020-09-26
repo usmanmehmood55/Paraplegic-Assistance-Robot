@@ -40,28 +40,43 @@
 #define RELAY_3 27
 #define RELAY_4 29
 
-void Move_Up(); void Move_Down(); void Move_Left(); void Move_Right(); 
+void Move_Up();
+void Move_Down();
+void Move_Left();
+void Move_Right();
+
+debounce UP_Button(UP_bt, 50);
+debounce DOWN_Button(DOWN_bt, 50);
+debounce LEFT_Button(LEFT_bt, 50);
+debounce RIGHT_Button(RIGHT_bt, 50);
 
 void setup()
 {
-  pinMode(RIGHT_bt, INPUT);
-  pinMode(LEFT_bt, INPUT);
-  pinMode(UP_bt, INPUT);
-  pinMode(DOWN_bt, INPUT);
-  pinMode(EM_STP_Base, INPUT);
-  pinMode(EM_STP_Linear, INPUT);
-
-  attachInterrupt(digitalPinToInterrupt(UP_bt), Move_Up, CHANGE);
-  attachInterrupt(digitalPinToInterrupt(DOWN_bt), Move_Down, CHANGE);
-  attachInterrupt(digitalPinToInterrupt(LEFT_bt), Move_Left, CHANGE);
-  attachInterrupt(digitalPinToInterrupt(RIGHT_bt), Move_Right, CHANGE);
-
   Serial.begin(9600);
 }
 
 void loop()
 {
-  delay(500);
+  if (UP_Button.debounceButton())
+  {
+    Serial.println("Up Pressed");
+  }
+  else if (DOWN_Button.debounceButton())
+  {
+    Serial.println("Down Pressed");
+  }
+  else if (LEFT_Button.debounceButton())
+  {
+    Serial.println("Left Pressed");
+  }
+  else if (RIGHT_Button.debounceButton())
+  {
+    Serial.println("Right Pressed");
+  }
+  else
+  {
+    //Serial.println("Nothing Pressed");
+  }
 }
 
 void Move_Up()

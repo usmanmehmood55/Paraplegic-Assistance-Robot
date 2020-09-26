@@ -12,7 +12,6 @@ class debounce
 public:
     debounce(char buttonPin, unsigned long debounceDelay);
     bool debounceButton();
-    unsigned long lastDebounceTime;
 
 private:
     char _buttonPin;
@@ -32,20 +31,15 @@ debounce::debounce(char buttonPin, unsigned long debounceDelay)
 
 bool debounce::debounceButton()
 {
-    int reading = digitalRead(_buttonPin);
-    if (reading != _lastButtonState)
+    if (digitalRead(_buttonPin))
     {
-        lastDebounceTime = millis();
+        while (digitalRead(_buttonPin));
+        return true;
     }
-    if ((millis() - lastDebounceTime) > _debounceDelay)
+    else
     {
-        if (reading != _buttonState)
-        {
-            _buttonState = reading;
-        }
+        return false;
     }
-    _lastButtonState = reading;
-    return _buttonState;
 }
 
 #endif
