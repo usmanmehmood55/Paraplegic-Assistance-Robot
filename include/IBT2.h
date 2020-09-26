@@ -14,8 +14,8 @@ public:
         const char EN_F[3], const char EN_B[3],
         const char PWM_F[3], const char PWM_B[3]);
 
-    void Move_Up();
-    void Move_Down();
+    void Move_Forward();
+    void Move_Backward();
     void Move_Left();
     void Move_Right();
 
@@ -43,7 +43,7 @@ IBT2::IBT2(
     }
 }
 
-void IBT2::Move_Up()
+void IBT2::Move_Forward()
 {
     digitalWrite(_EN_F[1], HIGH);
     digitalWrite(_EN_F[2], HIGH);
@@ -51,7 +51,7 @@ void IBT2::Move_Up()
     analogWrite(_PWM_F[2], 150);
 }
 
-void IBT2::Move_Down()
+void IBT2::Move_Backward()
 {
 
     digitalWrite(_EN_B[1], HIGH);
