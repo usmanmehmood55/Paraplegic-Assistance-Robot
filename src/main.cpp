@@ -45,10 +45,10 @@ void Move_Down();
 void Move_Left();
 void Move_Right();
 
-debounce UP_Button(UP_bt, 50);
-debounce DOWN_Button(DOWN_bt, 50);
-debounce LEFT_Button(LEFT_bt, 50);
-debounce RIGHT_Button(RIGHT_bt, 50);
+debounce UP_Button(UP_bt);
+debounce DOWN_Button(DOWN_bt);
+debounce LEFT_Button(LEFT_bt);
+debounce RIGHT_Button(RIGHT_bt);
 
 void setup()
 {
