@@ -50,18 +50,22 @@ void loop()
   if (UP_Button.debounceButton())
   {
     Serial.println("Up Pressed");
+    Drive.Move_Up();
   }
   else if (DOWN_Button.debounceButton())
   {
     Serial.println("Down Pressed");
+    Drive.Move_Down();
   }
   else if (LEFT_Button.debounceButton())
   {
     Serial.println("Left Pressed");
+    Drive.Move_Left();
   }
   else if (RIGHT_Button.debounceButton())
   {
     Serial.println("Right Pressed");
+    Drive.Move_Right();
   }
   else
   {
