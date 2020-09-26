@@ -40,6 +40,18 @@ debounce DOWN_Button(DOWN_bt);
 debounce LEFT_Button(LEFT_bt);
 debounce RIGHT_Button(RIGHT_bt);
 
+// Robot States
+enum Robot_States
+{
+  SIT,
+  STAND,
+  FORWARD,
+  BACKWARD,
+  LEFT,
+  RIGHT
+};
+Robot_States Robot_State = STAND;
+
 void setup()
 {
   Serial.begin(9600);
@@ -47,28 +59,45 @@ void setup()
 
 void loop()
 {
-  if (UP_Button.debounceButton())
+  switch (Robot_State)
   {
-    Serial.println("Up Pressed");
-    Drive.Move_Forward();
+  case SIT:
+  {
+    Drive.Stop_Base();
+    break;
   }
-  else if (DOWN_Button.debounceButton())
+  case STAND:
   {
-    Serial.println("Down Pressed");
-    Drive.Move_Backward();
+    Drive.Stop_Base();
+    break;
   }
-  else if (LEFT_Button.debounceButton())
+  case FORWARD:
   {
-    Serial.println("Left Pressed");
-    Drive.Move_Left();
+    Serial.println("State: FORWARD");
+    delay(250);
+    if (UP_Button.debounceButton())
+      Robot_State = FORWARD;
+    if (!UP_Button.debounceButton())
+      Robot_State = STAND;
+    break;
   }
-  else if (RIGHT_Button.debounceButton())
+  case BACKWARD:
   {
-    Serial.println("Right Pressed");
-    Drive.Move_Right();
+    Serial.println("State: BACKWARD");
+    delay(250);
+    if (DOWN_Button.debounceButton())
+      Robot_State = BACKWARD;
+    if (!DOWN_Button.debounceButton())
+      Robot_State = STAND;
+    break;
   }
-  else
+  case LEFT:
   {
-    //Serial.println("Nothing Pressed");
+    break;
+  }
+  case RIGHT:
+  {
+    break;
+  }
   }
 }

@@ -18,6 +18,10 @@ public:
     void Move_Backward();
     void Move_Left();
     void Move_Right();
+    void Abdomen_Up();
+    void Abdomen_Down();
+    void Stop_Base();
+    void Stop_Abdomen();
 
 private:
     unsigned char _EN_F[3];
@@ -74,6 +78,42 @@ void IBT2::Move_Right()
     digitalWrite(_EN_F[2], HIGH);
     analogWrite(_PWM_B[1], 150);
     analogWrite(_PWM_F[2], 150);
+}
+
+void IBT2::Abdomen_Up()
+{
+    digitalWrite(_EN_F[3], HIGH);
+    digitalWrite(_EN_B[3], LOW);
+    analogWrite(_PWM_F[3], 150);
+    analogWrite(_PWM_B[3], 0);
+}
+
+void IBT2::Abdomen_Down()
+{
+    digitalWrite(_EN_F[3], LOW);
+    digitalWrite(_EN_B[3], HIGH);
+    analogWrite(_PWM_F[3], 0);
+    analogWrite(_PWM_B[3], 150);
+}
+
+void IBT2::Stop_Base()
+{
+    analogWrite(_PWM_F[1], 0);
+    analogWrite(_PWM_B[1], 0);
+    analogWrite(_PWM_F[2], 0);
+    analogWrite(_PWM_B[2], 0);
+    digitalWrite(_EN_F[1], LOW);
+    digitalWrite(_EN_B[1], LOW);
+    digitalWrite(_EN_F[2], LOW);
+    digitalWrite(_EN_B[2], LOW);
+}
+
+void IBT2::Stop_Abdomen()
+{
+    analogWrite(_PWM_F[3], 0);
+    analogWrite(_PWM_B[3], 0);
+    digitalWrite(_EN_F[3], LOW);
+    digitalWrite(_EN_B[3], LOW);
 }
 
 #endif
