@@ -20,6 +20,11 @@ IBT2 Drive(EN_F_Pins, EN_B_Pins, PWM_F_Pins, PWM_B_Pins);
 #define EM_STP_Base 20
 #define EM_STP_Linear 21
 
+debounce UP_Button(UP_bt);
+debounce DOWN_Button(DOWN_bt);
+debounce LEFT_Button(LEFT_bt);
+debounce RIGHT_Button(RIGHT_bt);
+
 // LCD pins
 #define LCD_RS 41
 #define LCD_RW 43
@@ -34,11 +39,6 @@ IBT2 Drive(EN_F_Pins, EN_B_Pins, PWM_F_Pins, PWM_B_Pins);
 #define RELAY_2 25
 #define RELAY_3 27
 #define RELAY_4 29
-
-debounce UP_Button(UP_bt);
-debounce DOWN_Button(DOWN_bt);
-debounce LEFT_Button(LEFT_bt);
-debounce RIGHT_Button(RIGHT_bt);
 
 // Robot States
 enum Robot_States
