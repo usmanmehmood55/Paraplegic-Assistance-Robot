@@ -1,21 +1,16 @@
 #include <Arduino.h>
 #include <debounce.h>
+#include <IBT2.h>
 
 // Motor driver enable pins
-#define EN_F_Right 12
-#define EN_B_Right 13
-#define EN_F_Left 8
-#define EN_B_Left 9
-#define EN_F_Linear 2
-#define EN_B_Linear 3
+const char EN_F_Pins[3] = {12, 8, 2}; // EN_F_Right EN_F_Left EN_F_Linear
+const char EN_B_Pins[3] = {13, 9, 3}; // EN_B_Right EN_B_Left EN_B_Linear
 
 // Motor driver PWM pins
-#define PWM_F_Right 10
-#define PWM_B_Right 11
-#define PWM_F_Left 6
-#define PWM_B_Left 7
-#define PWM_F_Linear 4
-#define PWM_B_Linear 5
+const char PWM_F_Pins[3] = {10, 6, 4}; // PWM_F_Right PWM_F_Left PWM_F_Linear
+const char PWM_B_Pins[3] = {11, 7, 5}; // PWM_B_Right PWM_B_Left PWM_B_Linear
+
+IBT2 Drive(EN_F_Pins, EN_B_Pins, PWM_F_Pins, PWM_B_Pins);
 
 // Button input pins
 #define RIGHT_bt 19
@@ -39,11 +34,6 @@
 #define RELAY_2 25
 #define RELAY_3 27
 #define RELAY_4 29
-
-void Move_Up();
-void Move_Down();
-void Move_Left();
-void Move_Right();
 
 debounce UP_Button(UP_bt);
 debounce DOWN_Button(DOWN_bt);
@@ -76,49 +66,5 @@ void loop()
   else
   {
     //Serial.println("Nothing Pressed");
-  }
-}
-
-void Move_Up()
-{
-  while (digitalRead(UP_bt) == HIGH)
-  {
-    digitalWrite(EN_F_Right, HIGH);
-    digitalWrite(EN_F_Left, HIGH);
-    analogWrite(PWM_F_Right, 150);
-    analogWrite(PWM_F_Left, 150);
-  }
-}
-
-void Move_Down()
-{
-  while (digitalRead(DOWN_bt) == HIGH)
-  {
-    digitalWrite(EN_B_Right, HIGH);
-    digitalWrite(EN_B_Left, HIGH);
-    analogWrite(PWM_B_Right, 150);
-    analogWrite(PWM_B_Left, 150);
-  }
-}
-
-void Move_Left()
-{
-  while (digitalRead(UP_bt) == HIGH)
-  {
-    digitalWrite(EN_F_Right, HIGH);
-    digitalWrite(EN_B_Left, HIGH);
-    analogWrite(PWM_F_Right, 150);
-    analogWrite(PWM_B_Left, 150);
-  }
-}
-
-void Move_Right()
-{
-  while (digitalRead(UP_bt) == HIGH)
-  {
-    digitalWrite(EN_B_Right, HIGH);
-    digitalWrite(EN_F_Left, HIGH);
-    analogWrite(PWM_B_Right, 150);
-    analogWrite(PWM_F_Left, 150);
   }
 }
