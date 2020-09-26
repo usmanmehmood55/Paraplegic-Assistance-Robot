@@ -74,29 +74,49 @@ void loop()
   case FORWARD:
   {
     Serial.println("State: FORWARD");
-    delay(250);
-    if (UP_Button.debounceButton())
+    if (UP_Button.debounced())
+    {
+      Drive.Move_Forward();
       Robot_State = FORWARD;
-    if (!UP_Button.debounceButton())
+    }
+    if (!UP_Button.debounced())
       Robot_State = STAND;
     break;
   }
   case BACKWARD:
   {
     Serial.println("State: BACKWARD");
-    delay(250);
-    if (DOWN_Button.debounceButton())
+    if (DOWN_Button.debounced())
+    {
+      Drive.Move_Backward();
       Robot_State = BACKWARD;
-    if (!DOWN_Button.debounceButton())
+    }
+    if (!DOWN_Button.debounced())
       Robot_State = STAND;
     break;
   }
   case LEFT:
   {
+    Serial.println("State: LEFT");
+    if (LEFT_Button.debounced())
+    {
+      Drive.Move_Left();
+      Robot_State = LEFT;
+    }
+    if (!LEFT_Button.debounced())
+      Robot_State = STAND;
     break;
   }
   case RIGHT:
   {
+    Serial.println("State: RIGHT");
+    if (RIGHT_Button.debounced())
+    {
+      Drive.Move_Right();
+      Robot_State = RIGHT;
+    }
+    if (!RIGHT_Button.debounced())
+      Robot_State = STAND;
     break;
   }
   }

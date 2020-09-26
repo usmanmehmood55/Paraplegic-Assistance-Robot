@@ -11,7 +11,7 @@ class debounce
 {
 public:
     debounce(char buttonPin);
-    bool debounceButton();
+    bool debounced();
 
 private:
     char _buttonPin;
@@ -24,7 +24,7 @@ debounce::debounce(char buttonPin)
     pinMode(_buttonPin, INPUT);
 }
 
-bool debounce::debounceButton()
+bool debounce::debounced()
 {
     if (digitalRead(_buttonPin))
     {
