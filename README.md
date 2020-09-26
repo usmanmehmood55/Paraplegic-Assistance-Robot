@@ -1,3 +1,4 @@
 # Paraplegic-Assistance-Robot
 
-Personally writing code and a library for a Paraplegic assistance robot.
+Code and libraries for a Paraplegic assistance robot.
+FSM Added, needs testing. Button debouncing tested.
