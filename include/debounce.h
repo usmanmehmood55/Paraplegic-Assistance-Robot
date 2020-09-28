@@ -7,33 +7,34 @@
 #define debounce_h
 #include "Arduino.h"
 
+// Object for a button
 class debounce
 {
 public:
-    debounce(char buttonPin);
-    bool debounced();
+    debounce(char buttonPin);           // constructor
+    bool debounced();                   // debounce function
 
 private:
-    char _buttonPin;
-    bool _buttonState;
+    char _buttonPin;                    // pin number of button
+    bool _buttonState;                  // state of button, HIGH/LOW
 };
 
 debounce::debounce(char buttonPin)
 {
-    _buttonPin = buttonPin;
-    pinMode(_buttonPin, INPUT);
+    _buttonPin = buttonPin;             // sets pin number
+    pinMode(_buttonPin, INPUT);         // declares button pin as input
 }
 
 bool debounce::debounced()
 {
-    if (digitalRead(_buttonPin))
+    if (digitalRead(_buttonPin))        // if button is pressed
     {
-        while (digitalRead(_buttonPin))
+        while (digitalRead(_buttonPin)) // keeps running till the button is released
         {
-            _buttonState = HIGH;
-        };
+            _buttonState = HIGH;           
+        };                              // stops after the button is released
     }
-    else
+    else                                // if button is not pressed, returns LOW
     {
         _buttonState = LOW;
     }
