@@ -27,6 +27,10 @@ debounce::debounce(char buttonPin)
 
 bool debounce::debounced()
 {
+    // currently just returning digitalRead
+    // need to fix debouncing
+    return digitalRead(_buttonPin);
+
     if (digitalRead(_buttonPin))        // if button is pressed
     {
         while (digitalRead(_buttonPin)) // keeps running till the button is released

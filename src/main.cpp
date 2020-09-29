@@ -74,9 +74,27 @@ void loop()
   }
   case STAND:
   {
+    Serial.println("State: STAND");
     Drive.Stop_Base();
     // need to add cases according to button presses
     // need to add joystick code
+
+    if (UP_Button.debounced())
+    {
+      Robot_State = FORWARD;
+    }
+    else if (DOWN_Button.debounced())
+    {
+      Robot_State = BACKWARD;
+    }
+    else if (LEFT_Button.debounced())
+    {
+      Robot_State = LEFT;
+    }
+    else if (RIGHT_Button.debounced())
+    {
+      Robot_State = RIGHT;
+    }
     break;
   }
   case FORWARD:
