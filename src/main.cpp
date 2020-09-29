@@ -7,8 +7,8 @@ const char EN_F_Pins[3] = {12, 8, 2}; // EN_F_Right EN_F_Left EN_F_Linear
 const char EN_B_Pins[3] = {13, 9, 3}; // EN_B_Right EN_B_Left EN_B_Linear
 
 // Motor driver PWM pins
-const char PWM_F_Pins[3] = {10, 6, 4}; // PWM_F_Right PWM_F_Left PWM_F_Linear
-const char PWM_B_Pins[3] = {11, 7, 5}; // PWM_B_Right PWM_B_Left PWM_B_Linear
+const char PWM_F_Pins[3] = {11, 7, 5}; // PWM_F_Right PWM_F_Left PWM_F_Linear
+const char PWM_B_Pins[3] = {10, 6, 4}; // PWM_B_Right PWM_B_Left PWM_B_Linear
 
 IBT2 Drive(EN_F_Pins, EN_B_Pins, PWM_F_Pins, PWM_B_Pins); // initializes IBT object
 
@@ -63,8 +63,9 @@ void loop()
   /*
     need to make inturrupt based logic, robot should stay in the same state 
     until another button is pressed. For now, debounce.h does not work with 
-    this code right away. Use digitalRead() instead of debouncing. 
+    this code right away, and is simply returning digitalRead()
   */
+
   switch (Robot_State)
   {
   case SIT:
