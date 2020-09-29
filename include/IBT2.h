@@ -50,24 +50,24 @@ IBT2::IBT2(
 void IBT2::Move_Forward()
 {
     digitalWrite(_EN_F[1], HIGH);
-    digitalWrite(_EN_F[2], HIGH);
     digitalWrite(_EN_B[1], HIGH);
+    digitalWrite(_EN_F[2], HIGH);
     digitalWrite(_EN_B[2], HIGH);
     analogWrite(_PWM_F[1], 150);
-    analogWrite(_PWM_F[2], 150);
     analogWrite(_PWM_B[1], 0);
+    analogWrite(_PWM_F[2], 150);
     analogWrite(_PWM_B[2], 0);
 }
 
 void IBT2::Move_Backward()
 {
     digitalWrite(_EN_F[1], HIGH);
-    digitalWrite(_EN_F[2], HIGH);
     digitalWrite(_EN_B[1], HIGH);
+    digitalWrite(_EN_F[2], HIGH);
     digitalWrite(_EN_B[2], HIGH);
     analogWrite(_PWM_F[1], 0);
-    analogWrite(_PWM_F[2], 0);
     analogWrite(_PWM_B[1], 150);
+    analogWrite(_PWM_F[2], 0);
     analogWrite(_PWM_B[2], 150);
 }
 
